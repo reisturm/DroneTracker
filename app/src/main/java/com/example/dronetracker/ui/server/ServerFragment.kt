@@ -22,7 +22,7 @@ class ServerFragment : Fragment() {
         serverViewModel =
                 ViewModelProviders.of(this).get(ServerViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_server, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
+        val textView: TextView = root.findViewById(R.id.text_login)
         serverViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })

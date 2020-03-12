@@ -26,6 +26,10 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        val desc_textView: TextView = root.findViewById(R.id.text_desc)
+        homeViewModel.desc.observe(viewLifecycleOwner, Observer {
+            desc_textView.text = it
+        })
         return root
     }
 }

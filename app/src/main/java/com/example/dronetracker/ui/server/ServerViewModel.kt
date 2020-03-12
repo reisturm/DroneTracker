@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class ServerViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is server Fragment"
+        value = "Login"
     }
     val text: LiveData<String> = _text
 }

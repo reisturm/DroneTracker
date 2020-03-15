@@ -54,6 +54,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 .title("Marker in San Jose")
         )
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 12f))
     }
 }

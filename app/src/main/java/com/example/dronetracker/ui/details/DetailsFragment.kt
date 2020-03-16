@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dronetracker.R
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_details.*
 import okhttp3.*
 import java.io.IOException
@@ -29,7 +30,7 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView_main.layoutManager = LinearLayoutManager(context)
-        recyclerView_main.adapter = MainAdapter()
+//        recyclerView_main.adapter = MainAdapter()
 
         fetchJson()
 
@@ -45,7 +46,14 @@ class DetailsFragment : Fragment() {
         client.newCall(request).enqueue(object: Callback {
             override fun onResponse(call: Call, response: Response) {
                 val body = response?.body?.string()
-                println(body)
+
+                val gson = GsonBuilder().create()
+
+                val datafeed: List<DroneData> = gson.fromJson(body, Array<DroneData>::class.java).toList()
+
+                activity?.runOnUiThread {
+                    recyclerView_main.adapter = MainAdapter(datafeed)
+                }
             }
 
             override fun onFailure(call: Call, e: IOException) {
@@ -54,3 +62,20 @@ class DetailsFragment : Fragment() {
         })
     }
 }
+
+class DroneData(val MessageAolFlightPlan: MessageAOLFlightPlan)
+
+class MessageAOLFlightPlan(val callsign: String, val gufi: String, val state: String, val operation_volumes: List<OperationVolume>, val controller_location: ControllerLocation, val gcs_location: GCSLocation, val metadata: MetaData, val lla: List<Float>)
+
+class OperationVolume(val ordinal: Int, val near_structure: Boolean, val effective_time_begin: String, effective_time_end: String, val min_altitude: AltitudeObj, val max_altitude: AltitudeObj, val beyond_visual_line_of_sight: Boolean, val volume_type: String, val flight_geography: FGObject)
+
+class AltitudeObj(val altitude_value: Int, val vertical_reference: String, val units_of_measure: String, val source: String)
+
+class FGObject(val type: String, val coordinates: List<List<List<Float>>>)
+
+class ControllerLocation(val coordinates: List<Float>, type: String)
+
+class GCSLocation(val coordinates: List<Float>, type: String)
+
+class MetaData(val data_collection: Boolean, val scenario: String, val test_card: String, val call_sign: String, val test_type: String, val source: String, val event_id: String, val location: String, val setting: String, val free_text: String, val modified: Boolean, val test_run: String)
+

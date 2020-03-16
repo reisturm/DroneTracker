@@ -7,15 +7,16 @@
     android:id="@+id/detail_row">
 
     <TextView
-        android:id="@+id/GUID"
+        android:id="@+id/GUFI"
         android:layout_width="83dp"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="GUID:"
+        android:text="GUFI: "
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/Lat"
@@ -26,7 +27,7 @@
         android:text="Lat:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GUID" />
+        app:layout_constraintTop_toBottomOf="@+id/GUFI" />
 
     <TextView
         android:id="@+id/Long"
@@ -49,15 +50,17 @@
         />
 
     <TextView
-        android:id="@+id/textView_GUID"
+        android:id="@+id/textView_GUFI"
         android:layout_width="260dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/GUID"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/GUFI"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="24sp"/>
 
     <TextView
         android:id="@+id/textView_Lat"
@@ -68,7 +71,9 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Lat"
-        app:layout_constraintTop_toBottomOf="@+id/textView_GUID" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_GUFI"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="24sp"/>
 
     <TextView
         android:id="@+id/textView_long"
@@ -79,5 +84,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Long"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Lat" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_Lat"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="24sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

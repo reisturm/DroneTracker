@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dronetracker.R
 import kotlinx.android.synthetic.main.fragment_details.*
+import okhttp3.*
+import java.io.IOException
 
 class DetailsFragment : Fragment() {
 
@@ -29,5 +31,26 @@ class DetailsFragment : Fragment() {
         recyclerView_main.layoutManager = LinearLayoutManager(context)
         recyclerView_main.adapter = MainAdapter()
 
+        fetchJson()
+
+    }
+
+    fun fetchJson() {
+        println("Attemping to Fetch JSON")
+        val url = "http://10.0.2.2:3000/"
+        val request = Request.Builder().url(url).build()
+
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val body = response?.body?.string()
+                println(body)
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to execute request")
+            }
+        })
     }
 }

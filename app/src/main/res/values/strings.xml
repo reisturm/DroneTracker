@@ -4,6 +4,7 @@
     <string name="title_server">Server</string>
     <string name="title_map">Map</string>
     <string name="title_details">Details</string>
+    <string name="google_map_api_key">AIzaSyB6C4COk_CiplZhE0Mn4ZS76_zFoSUP1hU</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

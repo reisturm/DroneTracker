@@ -72,19 +72,19 @@ class MainActivity : AppCompatActivity() {
                             var coordinates=datafeed[datafeedIndex].MessageAolFlightPlan.
                                 operation_volumes[operationVolumesIndex]
                                 .flight_geography.coordinates[0][coordinatesArrayIndex];
-                            //Log.i("status", coordinates.toString());
+                            Log.i("coordinates", coordinates.toString());
 
                             var lat = coordinates[1].toDouble();
-                            //Log.i("status", lat.toString());
+                            Log.i("lat", lat.toString());
 
                             var long = coordinates[0].toDouble();
-                            //Log.i("status", long.toString());
+                            Log.i("long", long.toString());
 
                             var latLng = LatLng(lat,long);
-                            //Log.i("status", latLng.toString());
+                            Log.i("latLng", latLng.toString());
 
                             flightGeographyPolygon.add(latLng);
-                            //Log.i("status",flightGeographyPolygon[coordinatesArrayIndex].toString());
+                            //Log.i("flightGeographyPolygon[coordinatesArrayIndex]",flightGeographyPolygon[coordinatesArrayIndex].toString());
                         }
 
                         //Log.i("status", "coodinatesArrayDone");
@@ -97,9 +97,9 @@ class MainActivity : AppCompatActivity() {
                     //Log.i("status",ListFlightGeographyPolygon.size.toString())
                     //Log.i("status",ListFlightGeographyPolygon[0].toString())
 
-                    for(i in 0..ListFlightGeographyPolygon.size-1){
-                        Log.i("status",ListFlightGeographyPolygon[i].toString());
-                    }
+                    /*for(i in 0..ListFlightGeographyPolygon.size-1){
+                        Log.i("status3",ListFlightGeographyPolygon[i].toString());
+                    }*/
 
                     hashMap.put(gufi,ListFlightGeographyPolygon);
 

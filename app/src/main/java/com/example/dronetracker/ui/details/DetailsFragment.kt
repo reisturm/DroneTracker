@@ -2,6 +2,7 @@ package com.example.dronetracker.ui.details
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,7 @@ class DetailsFragment : Fragment() {
                 val gson = GsonBuilder().create()
 
                 val datafeed: List<DroneData> = gson.fromJson(body, Array<DroneData>::class.java).toList()
+                //Log.i("datafeeddetail",datafeed.toString());
 
                 activity?.runOnUiThread {
                     recyclerView_main.adapter = MainAdapter(datafeed)
